@@ -12,5 +12,8 @@ void main() {
   //late:遅延初期化(Dart 2.12以降)
   //宣言だけして後で初期化することができる ※初期化前に参照するとエラーになる
   //使い所は、クラスのコンストラクタで初期化する場合やDBから値を取得する非同期処理など
-
+  late String lateMessage;
+  //本来はコンストラクタや非同期処理で初期化するが、ここでは普通に代入している
+  lateMessage = 'Hello, World!';
+  print(lateMessage);
 }
