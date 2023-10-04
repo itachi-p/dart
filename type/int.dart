@@ -10,7 +10,7 @@ main() {
   print(a.isEven); //偶数かどうか
   print(a.isOdd); //奇数かどうか
 
-  //sign: 正負と0を判定
+  //フィールド: 正負と0を判定
   const int d = -100;
   print(d.sign);
   const int e = 100;
