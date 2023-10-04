@@ -23,12 +23,12 @@ void main() async {
   // thenメソッドを使った場合の例外処理(簡略化した書き方)
   print("thenの場合の例外処理");
   asyncFunction()
-      .then((value) => print("10を0で割った値: $value"))
+      .then((value) => print("10を0で割った値: $value")) // 到達しない
       // try-catch構文に相当する処理
       .catchError((error) => print("例外が発生しました: $error"))
       // finally節に相当する処理
       .whenComplete(() => print("最終処理が実行されました"))
       .then((value) => print("プログラムを終了します"));
   
-  print("(x)プログラムが終了しました"); // この行は非同期処理が終わる前に実行される
+  print("(x)プログラムが終了…しました?"); // この行は非同期処理が終わる前に実行される
 }
