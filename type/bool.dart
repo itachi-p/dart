@@ -5,7 +5,9 @@ void main() {
  
   // && かつ
   print(a && c); // 出力結果: true
-  print(b && c); // 出力結果: false
+  // ※厳密には、以下はbがfalse かつ&&なので、cの評価は行われない
+  //print(b && c); // 出力結果: false
+  print(b & c); // 出力結果: false
  
   // 否定
   print(!a); // 出力結果: false
