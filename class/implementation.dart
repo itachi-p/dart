@@ -12,7 +12,8 @@ abstract class RunnableInterface extends WalkableInterface {
   void run();
 }
 
-// インターフェースは複数implementsできる
+// 独立したインターフェースでなく、RunnableInterfaceに継承させることも可能
+// 複数implementsするより便利な場合もある（オブジェクト指向の設計による）
 abstract class WalkableInterface {
   void walk();
 }
@@ -20,22 +21,22 @@ abstract class WalkableInterface {
 //WalkableInterfaceはRunnableInterfaceが継承しているのでimplements不要
 class Human implements RunnableInterface {
   @override
-  void run() => print('人が走る');
+  void run() => print('とっとこ走る');
   @override
-  void walk() => print('人が歩く');
+  void walk() => print('てけてけ歩く');
 }
 
 class Dog implements RunnableInterface {
   @override
-  void run() => print('四足歩行で駆け抜ける');
-  void walk() => print('四足歩行で歩く');
+  void run() => print('四本足でたったか駆け抜ける');
+  void walk() => print('四本足ですたすた歩く');
 }
 
 // RunnableInterfaceとWalkableInterfaceの両方をimplementsしてもいい
 class Robot implements RunnableInterface, WalkableInterface {
   //@override // 省略可能
-  void run() => print('油を消費しながらガッチャンガッチャン走る');
-  void walk() => print('油を消費しながらウィンウィン歩く');
+  void run() => print('ガッチャンガッチャン走る');
+  void walk() => print('ウィンウィン歩く');
 }
 
 void main() {
