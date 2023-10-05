@@ -15,5 +15,7 @@ Dart &amp; Flutter for the first time in 3 years.
 
 - [ ] Udemy Dart & Flutter(01~03)
   1. [ ] Dart Foundation
+     - Dart language's unique statement
+     - Review of Object Oriented
   2. [ ] Flutter (develop SNS app) - Firebase
   3. [ ] Flutter (create some apps) - AWS CloudFunctions and others
