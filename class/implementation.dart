@@ -7,8 +7,8 @@
 // インターフェースは、全ての抽象メソッドのoverrideを強制する
 // メンバ変数やコンストラクタの定義も可能だが、抽象クラスの役割と被るので使わない
 
-// インターフェースの定義
-abstract class RunnableInterface {
+// インターフェースはインターフェースを継承できる
+abstract class RunnableInterface extends WalkableInterface {
   void run();
 }
 
@@ -17,19 +17,21 @@ abstract class WalkableInterface {
   void walk();
 }
 
-class Human implements RunnableInterface, WalkableInterface {
+//WalkableInterfaceはRunnableInterfaceが継承しているのでimplements不要
+class Human implements RunnableInterface {
   @override
   void run() => print('人が走る');
   @override
   void walk() => print('人が歩く');
 }
 
-class Dog implements RunnableInterface, WalkableInterface {
+class Dog implements RunnableInterface {
   @override
   void run() => print('四足歩行で駆け抜ける');
   void walk() => print('四足歩行で歩く');
 }
 
+// RunnableInterfaceとWalkableInterfaceの両方をimplementsしてもいい
 class Robot implements RunnableInterface, WalkableInterface {
   //@override // 省略可能
   void run() => print('油を消費しながらガッチャンガッチャン走る');
@@ -39,15 +41,14 @@ class Robot implements RunnableInterface, WalkableInterface {
 void main() {
   final Human human = Human();
   final Dog dog = Dog();
-  final robot = Robot(); // 型推論でRobot型として扱われるので省略可能
+  final robot = Robot(); // 型推論でRobot型として扱われるので型は省略可能
 
-  human.walk();
-  dog.walk();
-  robot.walk();
-
-  // 同じインターフェースを実装したクラスは、インターフェース型として扱える
+  // 同じインターフェースを実装したクラスは、インターフェース型の変数に代入できる
   final List<RunnableInterface> runners = [human, dog, robot];
+  // これにより繰り返しを避け(DRY原則)、コードをスッキリさせることができる
   for (final runner in runners) {
+    //RunnerInterfaceがWalkableInterfaceを継承しているのでwalk()も使える
+    runner.walk();
     runner.run();
   }
 }
