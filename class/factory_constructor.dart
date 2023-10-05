@@ -3,9 +3,12 @@
 // 条件分岐を外側に書くことなくインスタンスの型を動的に変えることができる
 
 class Car {
-  String country;
+  // TODO:null安全性及び可読性のために初期値を設定（不要かも?）
+  String country = "";
+  
   // 通常のコンストラクタ
   Car(this.country);
+
   // ファクトリーコンストラクタ
   factory Car.fromCountry(String country) {
     switch (country) {
@@ -35,6 +38,8 @@ void main() {
   print("型: ${car1.runtimeType}");
   final car2 = Car.fromCountry("USA");
   print("型: ${car2.runtimeType}");
-  final car3 = Car.fromCountry("France");
+  final car3 = Car.fromCountry("Germany");
   print("型: ${car3.runtimeType}");
+  final car4 = Car.fromCountry("");
+  print("型: ${car4.runtimeType}");
 }
